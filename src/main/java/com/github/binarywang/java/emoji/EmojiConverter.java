@@ -1,6 +1,7 @@
 package com.github.binarywang.java.emoji;
 
 import com.vdurmont.emoji.EmojiParser;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -106,6 +107,21 @@ public class EmojiConverter {
             return result;
         } else {
             return EmojiParser.parseToHtmlDecimal(result);
+        }
+    }
+
+    /**
+     * 转换emoji成Html
+     * @param source
+     * @param size 最大保留长度
+     * @return
+     */
+    public static String emojiToHtml(String source, int size) {
+        String result = StringUtils.isBlank(source) ? source : EmojiConverter.getInstance().toHtml(source);
+        if (size > 0) {
+            return StringUtils.left(result, size);
+        } else {
+            return result;
         }
     }
 
