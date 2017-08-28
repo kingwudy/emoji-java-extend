@@ -111,15 +111,15 @@ public class EmojiConverter {
     }
 
     /**
-     * 转换emoji成Html
-     * @param source
-     * @param size 最大保留长度
+     * convert emoji string with unicode/softbank to strings with html code
+     * @param input
+     * @param maxLen the max result length, 0:unlimited
      * @return
      */
-    public static String emojiToHtml(String source, int size) {
-        String result = StringUtils.isBlank(source) ? source : EmojiConverter.getInstance().toHtml(source);
-        if (size > 0) {
-            return StringUtils.left(result, size);
+    public static String toHtml(String input, int maxLen) {
+        String result = StringUtils.isBlank(input) ? input : EmojiConverter.getInstance().toHtml(input);
+        if (maxLen > 0) {
+            return StringUtils.left(result, maxLen);
         } else {
             return result;
         }
